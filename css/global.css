@@ -2,6 +2,22 @@
 font-family: monospace;
 }
 
+h1 {
+font-variant: small-caps;
+}
+
 a {
 color:black;
+}
+
+article {
+  border-bottom: 1px solid lightgrey;
+}
+
+pre {
+background-color: lightgrey;
+}
+
+code {
+font-family: 'Brutal Type';
 }
