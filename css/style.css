@@ -1,7 +1,7 @@
 body {
 display:grid;
 grid-template-columns: 40vw 15vw;
-grid-gap: 5vw;
+grid-column-gap: 5vw;
 padding:0 20vw;
 }
 
