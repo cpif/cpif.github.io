@@ -19,5 +19,5 @@ background-color: lightgrey;
 }
 
 code {
-font-family: "Brutal Type", monospace;
+font-family: "Brutal Type", monospace !important;
 }
