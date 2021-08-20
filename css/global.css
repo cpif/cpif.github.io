@@ -20,5 +20,6 @@ padding:1rem 0 1rem 1rem;
 }
 
 code {
-font-family: "Brutal Type" !important;
+font-weight: bold;
+color:green;
 }
