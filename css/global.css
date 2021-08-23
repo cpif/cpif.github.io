@@ -16,7 +16,7 @@ article {
 
 pre {
 background-color: black; /* background-color: rgb(196,194,194); */
-padding:1rem 1rem 0 1rem;
+padding:1rem 1rem 1rem 0;
 overflow-x: scroll;
 }
 
