@@ -10,7 +10,7 @@ a {
 color:black;
 }
 
-article {
+section {
   border-bottom: 1px solid lightgrey;
 }
 
