@@ -4,7 +4,7 @@ font-family: monospace;
 
 h1 {
 font-variant: small-caps;
-font-size:3rem;
+font-size:2.5rem;
 }
 
 a {
@@ -36,4 +36,8 @@ color:grey;
 
 img {
 	max-width:100%;
+}
+
+.tmblr-iframe {
+	display:none;
 }
