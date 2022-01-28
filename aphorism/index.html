@@ -4,9 +4,16 @@
 
 <meta charset="utf-8"/>
 
+<link rel="stylesheet" href="style.css"> 
+
 <title>Aphorism Generator</title>
 <script>
 
+var number_of_forms = 7;    // Every time you add another form, add 1 here
+var number_of_nouns = 6;    // Same
+var number_of_passes = 3;   // Number of aphorisms to generate
+
+/*  THE FORMS AND PAIRS THEMSELVES  */
 const forms = [
 {
     "text": [ " is the continuation of ", " by other means." ],
@@ -33,6 +40,16 @@ const forms = [
     "length": 2,
     "leader": 1
 },
+{
+    "text": [ " is a malady for which ", " is the cure." ],
+    "length": 2,
+    "leader": 0
+},
+{
+    "text": [ " deceives us more often than ", "." ],
+    "length": 2,
+    "leader": 0
+}
 ];
 
 const nouns = [
@@ -41,21 +58,51 @@ const nouns = [
 [   "knowledge",    "science"       ],
 [   "life",         "death"         ],
 [   "form",         "content"       ],
-[   "remembering",  "forgetting"    ]
+[   "remembering",  "forgetting"    ],
+[   "belief",       "relief"        ]
 
 ];
 
+/*  Fisher-Yates shuffle function
+    Selects random forms and noun-pairs       */
+
+function shuffle(array) {
+    var i = array.length,
+        j = 0,
+        temp;
+
+    while (i--) {
+
+        j = Math.floor(Math.random() * i);
+
+        temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+
+    }
+
+    return array;
+}
+
+/*  Create arrays of random form and noun-pair indices  */
+var numforms = new Array();
+for ( let i = 0; i < number_of_forms; i++) numforms.push(i);
+var ranForms = shuffle(numforms);
+var numnouns = new Array();
+for ( let i = 0; i < number_of_nouns; i++) numnouns.push(i);
+var ranNouns = shuffle(numnouns);
+
 function generate () {
-    for ( let i = 0; i < 5; i++) {
+    for ( let i = 0; i < number_of_passes; i++) {
 
         document.getElementById("print_aphorisms").innerHTML += "<p>";
 
-        if ( forms[i].leader )      // Print leadertext if aphorism form doesn't begin with first noun
-            document.getElementById("print_aphorisms").innerHTML += forms[i].text.shift();
+        if ( forms[ranForms[i]].leader )      // Print leadertext if aphorism form doesn't begin with first noun
+            document.getElementById("print_aphorisms").innerHTML += forms[ranForms[i]].text.shift();
 
         for ( j = 0; j < forms[i].length; j++ ) {       // Print aphorism
-            document.getElementById("print_aphorisms").innerHTML += nouns[i][j];
-            document.getElementById("print_aphorisms").innerHTML += forms[i].text[j];
+            document.getElementById("print_aphorisms").innerHTML += nouns[ranNouns[i]][j];
+            document.getElementById("print_aphorisms").innerHTML += forms[ranForms[i]].text[j];
         }
 
         document.getElementById("print_aphorisms").innerHTML += "</p>";
@@ -68,11 +115,3 @@ function generate () {
 <div id="print_aphorisms"></div>
 </body>
 </html>
-
-<!--
-
-Syntax for get element by id
-
- document.getElementById("demo").innerHTML = "Paragraph changed!";
-
---g
