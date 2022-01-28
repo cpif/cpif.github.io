@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+
+<meta charset="utf-8"/>
+
+<title>Aphorism Generator</title>
+<script>
+
+const forms = [
+{
+    "text": [ " is the continuation of ", " by other means." ],
+    "length": 2,
+    "leader": 0
+},
+{
+    "text": [ "a little ", " carries us away from ", ", a lot brings us closer." ],
+    "length": 2,
+    "leader": 1
+},
+{
+    "text": [ "little ", "s make big ", "s." ],
+    "length": 2,
+    "leader": 1
+},
+{
+    "text": [ "happiness is in ", " not ", "." ],
+    "length": 2,
+    "leader": 1
+},
+{
+    "text": [ "a ", " saved is a ", " earned." ],
+    "length": 2,
+    "leader": 1
+},
+];
+
+const nouns = [
+
+[   "sentiment",    "sensation"     ],
+[   "knowledge",    "science"       ],
+[   "life",         "death"         ],
+[   "form",         "content"       ],
+[   "remembering",  "forgetting"    ]
+
+];
+
+function generate () {
+    for ( let i = 0; i < 5; i++) {
+
+        document.getElementById("print_aphorisms").innerHTML += "<p>";
+
+        if ( forms[i].leader )      // Print leadertext if aphorism form doesn't begin with first noun
+            document.getElementById("print_aphorisms").innerHTML += forms[i].text.shift();
+
+        for ( j = 0; j < forms[i].length; j++ ) {       // Print aphorism
+            document.getElementById("print_aphorisms").innerHTML += nouns[i][j];
+            document.getElementById("print_aphorisms").innerHTML += forms[i].text[j];
+        }
+
+        document.getElementById("print_aphorisms").innerHTML += "</p>";
+    }
+}
+
+</script>
+</head>
+<body onLoad="generate()">
+<div id="print_aphorisms"></div>
+</body>
+</html>
+
+<!--
+
+Syntax for get element by id
+
+ document.getElementById("demo").innerHTML = "Paragraph changed!";
+
+--g
