@@ -1,10 +1,26 @@
 <!doctype html>
 <html>
 <head>
+
+  <!--
+
+    PEEK-A-BOO
+
+  -->
+
   <title>{{ page.title }}</title>
+
+  <link rel="stylesheet" href="/assets/css/style.css" media="screen and (min-width: 800px)">
+  <link rel="stylesheet" href="/assets/css/mobile.css" media="screen and (max-width: 800px)">
+  <link rel="icon" href="/assets/images/grep.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+
 </head>
 <body>
-  <header>{{ page.title }}</header>
+  {% include header.html %}
+  {% include nav.html %}
   {{ content }}
 </body>
 </html>
