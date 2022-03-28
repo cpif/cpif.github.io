@@ -19,7 +19,7 @@
 
 </head>
 <body>
-  {% include header.html %}
+  {% if site.data.options.showheader %}{% include header.html %}{% endif %}
   {% include nav.html %}
   {{ content }}
 </body>
