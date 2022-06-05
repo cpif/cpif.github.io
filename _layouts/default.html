@@ -2,25 +2,21 @@
 <html>
 <head>
 
-  <!--
+    <title>{{ page.title }}</title>
 
-    PEEK-A-BOO
+    <link rel="stylesheet" href="/assets/css/style.css" media="screen and (min-width: 800px)">
 
-  -->
-
-  <title>{{ page.title }}</title>
-
-  <link rel="stylesheet" href="/assets/css/style.css" media="screen and (min-width: 800px)">
-  <link rel="stylesheet" href="/assets/css/mobile.css" media="screen and (max-width: 800px)">
-  <link rel="icon" href="/assets/images/grep.png">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
 
 </head>
 <body>
-  {% if site.data.options.showheader %}{% include header.html %}{% endif %}
-  {% include nav.html %}
-  {{ content }}
+    <header>{{ page.title | markdownify }}</header>
+    <aside>
+        {% include nav.html %}
+    </aside>
+    <article>
+        {{ content }}
+    </article>
 </body>
 </html>
