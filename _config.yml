@@ -3,3 +3,6 @@ defaults:
       path: ""
     values:
       layout: "default"
+
+exclude:
+  - _drafts/
