@@ -1,7 +1,6 @@
-#- label: Teva ReEmber
-#  url: /assets/images/teva.jpg
-#  type: image
-#
 - label: Flip Flop
   url: /assets/images/flipflop.jpg
+  type: image
+- label: Dashboard
+  url: /assets/images/dashboard.jpg
   type: image
