@@ -1,6 +1,9 @@
 - label: Dashboard
   url: /assets/images/dashboard.jpg
   type: image
+- label: Consumption Cure
+  url: /assets/images/consumption.jpg
+  type: image
 - label: Flip Flop
   url: /assets/images/flipflop.jpg
   type: image
