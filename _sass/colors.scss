@@ -1,0 +1,11 @@
+$highlight: #decade;
+$bold: #D00D00;
+$subtle: #efface;
+
+a {
+    color: $bold;
+}
+
+::selection {
+    background-color: $subtle;
+}

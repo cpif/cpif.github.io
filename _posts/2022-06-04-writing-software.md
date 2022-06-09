@@ -1,6 +1,6 @@
 ---
 title: |
-  A Writing "Stack"
+  A Writing Stack
 tags:
   - writsoft
 ---
