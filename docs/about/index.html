@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+  <style>
+    nav ul {
+        list-style-type:none;
+        padding:0;
+    }
+
+    ::selection {
+        background-color:#EFFACE;
+    }
+
+    a {
+        color:#D00D00;
+    }
+
+    img {
+        width:100%;
+        height:auto;
+    }
+
+    @media only screen and (min-width: 800px) {
+        body {
+            max-width: 800px;
+            display:grid;
+            grid-template-columns:100px 600px
+        }
+
+        header {
+            grid-column:1 / span 2;
+        }
+    }
+  </style>
+
+  <title>About this Site</title>
+
+</head>
+<body>
+  <header>About this Site</header>
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/posts">Posts</a></li>
+    </ul>
+  </nav>
+  <article>
+        <p>This site is proudly JavaScript and PHP-free. It uses no databases, no Wordpress, no CMS. I write all the content in markdown, and static HTML pages are generated using John MacFarlane’s wonderful <a href="https://pandoc.org/">Pandoc</a> and the equally wonderful <a href="https://fishshell.com/">Fish shell</a>.</p>
+        <p>To reduce the number of queries, I use an embedded stylesheet. Ideally, I will soon abandon CSS altogether.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+        <section class="footnotes footnotes-end-of-document" role="doc-endnotes">
+        <hr />
+        <ol>
+        <li id="fn1" role="doc-endnote"><p>See <a href="https://hackernoon.com/an-alternate-web-design-style-guide-1aae8d0b5df5#.gwv8pijau">this post</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+        </ol>
+        </section>
+    
+  </article>
+</body>
+</html>
