@@ -1,6 +1,7 @@
 #!/usr/bin/fish
 
 pandoc index.md -so docs/index.html --template=theme/default.html
+pandoc README.md -so docs/about.html --template=theme/default.html
 
 echo -e "---\ntitle: Posts\nabstract: \"Cpif's blog\"\n---\n\n" > pages/posts.md
 
