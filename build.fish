@@ -4,7 +4,7 @@ pandoc index.md -so docs/index.html --template=theme/default.html
 
 echo -e "---\ntitle: Posts\nabstract: \"Cpif's blog\"\n---\n\n" > pages/posts.md
 
-for page in (ls posts/*.md)
+for page in (ls posts/*.md | sort -r)
     set pageyear (sed -n 's/year: //gp' $page)
     set pagemonth (sed -n 's/month: //gp' $page)
     set pagename (basename $page .md).html

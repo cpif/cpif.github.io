@@ -7,16 +7,6 @@
 textfiles from websites." />
 
   <style>
-    body {
-        max-width: 800px;
-        display:grid;
-        grid-template-columns:100px 600px
-    }
-
-    header {
-        grid-column:1 / span 2;
-    }
-
     nav ul {
         list-style-type:none;
         padding:0;
@@ -35,6 +25,17 @@ textfiles from websites." />
         height:auto;
     }
 
+    @media only screen and (min-width: 800px) {
+        body {
+            max-width: 800px;
+            display:grid;
+            grid-template-columns:100px 600px
+        }
+
+        header {
+            grid-column:1 / span 2;
+        }
+    }
   </style>
 
   <title>Using Sed on Websites</title>

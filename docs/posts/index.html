@@ -6,16 +6,6 @@
   <meta name="description" content="Cpif’s blog" />
 
   <style>
-    body {
-        max-width: 800px;
-        display:grid;
-        grid-template-columns:100px 600px
-    }
-
-    header {
-        grid-column:1 / span 2;
-    }
-
     nav ul {
         list-style-type:none;
         padding:0;
@@ -34,6 +24,17 @@
         height:auto;
     }
 
+    @media only screen and (min-width: 800px) {
+        body {
+            max-width: 800px;
+            display:grid;
+            grid-template-columns:100px 600px
+        }
+
+        header {
+            grid-column:1 / span 2;
+        }
+    }
   </style>
 
   <title>Posts</title>
@@ -49,12 +50,12 @@
   </nav>
   <article>
         <ul>
-        <li><a href="/2022/06/2022-06-04-writing-software.html">A
-        Writing Stack</a></li>
-        <li><a href="/2022/06/2022-06-09-cheap-website.html">A Free
-        Website</a></li>
         <li><a href="/2022/06/2022-06-14-color-words.html">Using Sed on
         Websites</a></li>
+        <li><a href="/2022/06/2022-06-09-cheap-website.html">A Free
+        Website</a></li>
+        <li><a href="/2022/06/2022-06-04-writing-software.html">A
+        Writing Stack</a></li>
         </ul>
   </article>
 </body>
