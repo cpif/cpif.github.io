@@ -24,6 +24,9 @@
     <p>$month$-$day$-$year$</p>
     $endif$
     $body$
+    $if(year)$
+    ${ footer() }
+    $endif$
   </article>
 </body>
 </html>
