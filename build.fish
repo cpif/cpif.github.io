@@ -26,8 +26,6 @@ for page in (ls pages/*.md)
     if ! test -d docs/(basename $page .md)/
         mkdir docs/(basename $page .md)/
     end
-    set pagelink docs/(basename $page .md)/
-    echo "- [$page]($pagelink)" >> nav.md
     pandoc $page -so docs/(basename $page .md)/index.html --template=theme/default.html
 end
 
