@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Using sed and wget to create useful
+textfiles from websites." />
+
+  <style>
+    body {
+        max-width: 800px;
+        display:grid;
+        grid-template-columns:100px 600px
+    }
+
+    header {
+        grid-column:1 / span 2;
+    }
+
+    nav ul {
+        list-style-type:none;
+        padding:0;
+    }
+
+    ::selection {
+        background-color:#EFFACE;
+    }
+
+    a {
+        color:#D00D00;
+    }
+
+    img {
+        width:100%;
+        height:auto;
+    }
+
+  </style>
+
+  <title>Using Sed on Websites</title>
+
+</head>
+<body>
+  <header>Using Sed on Websites</header>
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/posts">Posts</a></li>
+    </ul>
+  </nav>
+  <article>
+        <p>6-14-2022</p>
+        <p>Lately, I’ve been using two non-interactive text editors –
+        sed and awk – to extract useful information from webpages. It’s
+        not scraping: scraping is automated, and aims at generating tons
+        of data. What I’m doing involves whittling a large amount of
+        information down to readable, usable textfiles.</p>
+        <p>For example, I recently discovered <a
+        href="https://hexwords.netlify.app/">Hexwords</a> – a charming
+        website that lists hexadecimal colors which are also English
+        words (or at least resemble them). However, a number of the
+        so-called “words” aren’t word-y enough for my liking; for
+        example, “biased” is actually <code>b1a5ed</code>. I wanted a
+        list of only the wordiest color words in a textfile for my
+        personal reference. Here’s what I did.</p>
+        <p>First, I downloaded the raw html of the site, then I
+        inspected it for patterns with <code>less</code>:</p>
+        <pre><code>wget https://hexwords.netlify.app/
+less index.html</code></pre>
+        <p>Thankfully, each word entry occupies a line all by itself. It
+        looks like this:</p>
+        <pre><code>        &lt;/li&gt;&lt;li class=&quot;svelte-1m9ptdb&quot; style=&quot;--color: #C0FFEE;&quot;&gt;&lt;button class=&quot;svelte-1m9ptdb&quot; style=&quot;colo
+r: black;&quot;&gt;#C0FFEE</code></pre>
+        <p>I used one sed command to extract only those lines from the
+        html:</p>
+        <pre><code>sed -n &#39;/#[A-Z]\{6,\}$/p&#39; index.html</code></pre>
+        <p>The <code>-n</code> flag tells sed not to print anything we
+        don’t want; <code>[A-Z]</code> tells it to match only
+        capitalized characters from A to Z; <code>\{6,\}</code> to match
+        at least six of those characters; and <code>$</code> that those
+        six letters should occur at the end of the line.</p>
+        <p>By piping the results of this command back into sed,
+        everything else in the line can be deleted:</p>
+        <pre><code>sed &#39;s/^.*&gt;//g&#39;</code></pre>
+        <p>The entire command looks like this:</p>
+        <pre><code>sed -n &#39;/#[A-Z0]\{6,\}$/p&#39; index.html |\
+sed &#39;s/^.*&gt;//g&#39; &gt; hexwords.txt</code></pre>
+        <p>You’ll notice I added a <code>0</code> to the earlier
+        <code>[A-Z]</code>. This is to keep “words” like
+        <code>C0FFEE</code> and <code>D00D00</code> – which look close
+        enough to the real thing to satisfy me. The
+        <code>&gt; hexwords.txt</code> at the end writes the results to
+        a textfile.</p>
+        <p>The output text looks like this:</p>
+        <pre><code>#C0FFEE
+#DECADE
+#FACADE
+#DEC0DE
+#BEADED
+#B00B00
+#BEDDED
+#DEFACE
+#BA0BAB
+#ACCEDE
+#D00DAD
+#AB0DED
+#BACCAE
+#BAFFED
+#BEEBEE
+#BEEFED
+#B0BBED
+#B0FFED
+#B00BED
+#B00C00
+#CABBED
+#C0DDED
+#C00C00
+#C00EED
+#DABBED
+#DAD0ED
+#DAFFED
+#DEEDED
+#D0FFED
+#D00D00
+#EFFACE
+#F0BBED</code></pre>
+        <p>Pretty good! I picked <code>D00D00</code>,
+        <code>DECADE</code>, and <code>EFFACE</code> as theme colors for
+        my site.</p>
+  </article>
+</body>
+</html>

@@ -1,4 +1,9 @@
 ---
+abstract: "Using sed and wget to create useful textfiles from
+  websites."
+year: 2022
+month: 06
+day: 14
 title: Using Sed on Websites
 ---
 

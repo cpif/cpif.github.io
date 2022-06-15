@@ -1,6 +1,10 @@
 ---
-title: |
-  A Writing Stack
+abstract: "The writing stack 
+  I use in lieu of Microsoft Word."
+year: 2022
+month: 06
+day: 04
+title: A Writing Stack
 tags:
   - writsoft
 ---
