@@ -20,13 +20,13 @@
 
   </nav>
   <article>
-    $if(year)$
-    <p>$month$-$day$-$year$</p>
-    $endif$
-    $body$
-    $if(year)$
-    ${ footer() }
-    $endif$
+$if(year)$
+<p>$month$-$day$-$year$</p>
+$endif$
+$body$
+$if(year)$
+${ footer() }
+$endif$
 
   </article>
 </body>
