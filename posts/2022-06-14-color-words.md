@@ -1,4 +1,9 @@
 ---
+abstract: "Using sed and wget to create useful textfiles from
+  websites."
+year: 2022
+month: 06
+day: 14
 title: Using Sed on Websites
 ---
 
@@ -28,8 +33,7 @@ Thankfully, each word entry occupies a line all by itself. It
 looks like this:
 
 ```
-        </li><li class="svelte-1m9ptdb" style="--color: #C0FFEE;"><button class="svelte-1m9ptdb" style="colo
-r: black;">#C0FFEE
+        </li><li class="svelte-1m9ptdb" style="--color: #C0FFEE;"><button class="svelte-1m9ptdb" style="color: black;">#C0FFEE
 ```
 
 I used one sed command to extract only those lines from the html:

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  $if(abstract)$<meta name="description" content="$abstract$" />$endif$
+
+  <style>
+    ${ styles.css() }
+
+  </style>
+
+  <title>$title$</title>
+
+</head>
+<body>
+  <header>$title$</header>
+  <nav>
+    ${ nav() }
+
+  </nav>
+  <article>
+$if(year)$
+<p>$month$-$day$-$year$</p>
+$endif$
+$body$
+$if(year)$
+${ footer() }
+$endif$
+
+  </article>
+</body>
+</html>

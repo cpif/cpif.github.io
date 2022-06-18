@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="How to get a free website." />
+
+  <style>
+    nav ul {
+        list-style-type:none;
+        padding:0;
+    }
+
+    ::selection {
+        background-color:#EFFACE;
+    }
+
+    a {
+        color:#D00D00;
+    }
+
+    img {
+        width:100%;
+        height:auto;
+    }
+
+    pre {
+        overflow: scroll;
+    }
+
+    @media only screen and (min-width: 800px) {
+        body {
+            max-width: 800px;
+            display:grid;
+            grid-template-columns:100px 600px
+        }
+
+        header {
+            grid-column:1 / span 2;
+        }
+    }
+  </style>
+
+  <title>A Free Website</title>
+
+</head>
+<body>
+  <header>A Free Website</header>
+  <nav>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/posts">Posts</a></li>
+    </ul>
+  </nav>
+  <article>
+<p>6-9-2022</p>
+<p>I just searched for “web hosting” and clicked the first result. It happened to be GoDaddy, and I looked at their “Economy Plan”: you pay <em>only</em> $215 today.</p>
+<p>That’s stupid.</p>
+<p>Here’s an easy, quick way to get a free website.</p>
+<h1 id="domain-name">Domain Name</h1>
+<p>First, visit <a href="https://www.freenom.com/">Freenom</a>. Search for your desired website name and click “Check Availability.” Hopefully some results are available.</p>
+<p>Freenom is kind of tricky; it looks like you can select one of the domains from the search results, but this won’t work. What you have to do is this: once you find a domain name that sounds good, you have to search <em>again</em>, for that domain. So, for example, if you searched <code>my-website</code> and <code>my-website.tk</code> showed up in the search results, you have to go back and search for <code>my-website.tk</code>. Then and only then will you be able to select it.</p>
+<p>Next you’ll want to make a burner email account to sign up with – I trust you know how to do that all by yourself. Put that in and verify your email. Then it’ll ask you for your name and address; if I were you I’d put some bogus information here, too – they won’t check it. Somewhere during this process, it’ll ask you how long you want the domain for. The longest you can have it for free is 12 months, which is a perfect amount of time for your site to exist.</p>
+<p>Now, from your dashboard, click “Manage Freenom DNS.” Under “Add Records,” you should see four fields. Leave “Name” blank, set “Type” to “A” and “TTL” to “3600” (if they aren’t already), and type “185.199.108.153” into “Target.”</p>
+<p>Click “+ More Records,” then repeat three times, adding “185.199.109.153,” “185.199.110.153,” and “185.199.111.153” to the “Target” fields.</p>
+<p>Step 1 complete! Now let’s set up your site.</p>
+<h1 id="github">GitHub</h1>
+<p>Now go to <a href="https://github.com/">GitHub</a>. Create an account with your burner email. You can make the username anything you like, but let’s say you pick <code>my-website</code>.</p>
+<p>Click “Create New Repository.” Now, this next step is important: if your username is <code>my-website</code>, you’ll want to name your repository <code>my-website.github.io</code>. The rest of the fields you can fill out any way you like. Make sure the repository is set to “Public,” not “Private.” Save and submit.</p>
+<p>The next screen will be kind of cluttered and confusing, but find and click “creating a new file.”</p>
+<p>Name this file <code>index.html</code>. If you know HTML, go ahead and enter it here. If you don’t, put in the following:</p>
+<pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;My Website&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Welcome to my website&lt;/h1&gt;
+&lt;p&gt;I&#39;m happy to see you here!&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>Save and submit.</p>
+<p>Now, go to “Settings.” From there, find “Pages” in the left-hand menu. Under “Custom Domain,” enter the domain name you got from Freenom earlier and hit “Save.”</p>
+<p>The next step involves getting over some glitchiness with GitHub and Freenom talking to each other. You want to check “Enforce HTTPS,” under the “Custom Domain” box.</p>
+<p>If you can’t check it, refresh the page. If that doesn’t help, wait fifteen minutes and refresh again. If that doesn’t help, click “Remove” next to “Custom Domain” and reenter everything. Keep doing this until “Enforce HTTPS” works.</p>
+<p>Then wait some more.</p>
+<p>Once GitHub has issued you an HTTPS certificate and accepted that your domain is properly configured… <em>voilà</em>! You have your own website!</p>
+<h1 id="going-further">Going Further</h1>
+<p>From the GitHub repository you created, you can make more <code>.html</code> files with additional content. You’ll have to learn HTML to handle that part. I recommend W3Schools if you need help.</p>
+<p>Phooey to you, GoDaddy.</p>
+<hr>
+<p>Do you have a comment about this post? Why not 
+<a href="mailto:cpif@protonmail.com?subject=cpif.cyou: A Free Website">email me about it</a>?
+</p>
+  </article>
+</body>
+</html>

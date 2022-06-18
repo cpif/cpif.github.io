@@ -1,0 +1,33 @@
+nav ul {
+    list-style-type:none;
+    padding:0;
+}
+
+::selection {
+    background-color:#EFFACE;
+}
+
+a {
+    color:#D00D00;
+}
+
+img {
+    width:100%;
+    height:auto;
+}
+
+pre {
+    overflow: scroll;
+}
+
+@media only screen and (min-width: 800px) {
+    body {
+        max-width: 800px;
+        display:grid;
+        grid-template-columns:100px 600px
+    }
+
+    header {
+        grid-column:1 / span 2;
+    }
+}
