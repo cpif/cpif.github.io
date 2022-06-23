@@ -32,6 +32,9 @@ pre {
     }
 }
 
+code {
+    background-color: darkgrey;
+}
 code span.al {
     color: #ffcfaf;     /* Alert */
 }
