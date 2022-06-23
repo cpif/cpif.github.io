@@ -66,7 +66,7 @@ and click "creating a new file."
 Name this file `index.html`. If you know HTML, go ahead and enter
 it here. If you don't, put in the following:
 
-```
+```html
 <!doctype html>
 <html>
 <head>

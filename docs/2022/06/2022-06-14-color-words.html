@@ -39,6 +39,100 @@
             grid-column:1 / span 2;
         }
     }
+
+    code span.al {
+        color: #ffcfaf;     /* Alert */
+    }
+    code span.an {
+        color: #7f9f7f; 
+        font-weight: bold;  /* Annotation */
+    }
+    code span.at {
+                            /* Attribute */
+    }
+    code span.bn {
+        color: #dca3a3;     /* BaseN */
+    }
+    code span.bu {
+                            /* BuiltIn */
+    }
+    code span.cf {
+        color: #f0dfaf;     /* ControlFlow */
+    }
+    code span.ch {
+        color: #dca3a3;     /* Char */
+    }
+    code span.cn {
+        color: #dca3a3; 
+        font-weight: bold;  /* Constant */
+    }
+    code span.co {
+        color: #7f9f7f;     /* Comment */
+    }
+    code span.cv {
+        color: #7f9f7f; 
+        font-weight: bold;  /* CommentVar */
+    }
+    code span.do {
+        color: #7f9f7f;     /* Documentation */
+    }
+    code span.dt {
+        color: #dfdfbf;     /* DataType */
+    }
+    code span.dv {
+        color: #dcdccc;     /* DecVal */
+    }
+    code span.er {
+        color: #c3bf9f;     /* Error */
+    }
+    code span.ex {
+                            /* Extension */
+    }
+    code span.fl {
+        color: #c0bed1;     /* Float */
+    }
+    code span.fu {
+        color: #efef8f;     /* Function */
+    }
+    code span.im {
+                            /* Import */
+    }
+    code span.in {
+        color: #7f9f7f; 
+        font-weight: bold;  /* Information */
+    }
+    code span.kw {
+        color: #f0dfaf;     /* Keyword */
+    }
+    code span.op {
+        color: #f0efd0;     /* Operator */
+    }
+    code span.ot {
+        color: #efef8f;     /* Other */
+    }
+    code span.pp {
+        color: #ffcfaf; 
+        font-weight: bold;  /* Preprocessor */
+    }
+    code span.sc {
+        color: #dca3a3;     /* SpecialChar */
+    }
+    code span.ss {
+        color: #cc9393;     /* SpecialString */
+    }
+    code span.st {
+        color: #cc9393;     /* String */
+    }
+    code span.va {
+                            /* Variable */
+    }
+    code span.vs {
+        color: #cc9393;     /* VerbatimString */
+    }
+    code span.wa {
+        color: #7f9f7f; 
+        font-weight: bold;  /* Warning */
+    }
   </style>
 
   <title>Using Sed on Websites</title>
@@ -58,18 +152,18 @@
 <p>Lately, I’ve been using two non-interactive text editors – sed and awk – to extract useful information from webpages. It’s not scraping: scraping is automated, and aims at generating tons of data. What I’m doing involves whittling a large amount of information down to readable, usable textfiles.</p>
 <p>For example, I recently discovered <a href="https://hexwords.netlify.app/">Hexwords</a> – a charming website that lists hexadecimal colors which are also English words (or at least resemble them). However, a number of the so-called “words” aren’t word-y enough for my liking; for example, “biased” is actually <code>b1a5ed</code>. I wanted a list of only the wordiest color words in a textfile for my personal reference. Here’s what I did.</p>
 <p>First, I downloaded the raw html of the site, then I inspected it for patterns with <code>less</code>:</p>
-<pre><code>wget https://hexwords.netlify.app/
-less index.html</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://hexwords.netlify.app/</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> index.html</span></code></pre></div>
 <p>Thankfully, each word entry occupies a line all by itself. It looks like this:</p>
-<pre><code>        &lt;/li&gt;&lt;li class=&quot;svelte-1m9ptdb&quot; style=&quot;--color: #C0FFEE;&quot;&gt;&lt;button class=&quot;svelte-1m9ptdb&quot; style=&quot;color: black;&quot;&gt;#C0FFEE</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;/li&gt;&lt;li</span> <span class="er">class</span><span class="ot">=</span><span class="st">&quot;svelte-1m9ptdb&quot;</span> <span class="er">style</span><span class="ot">=</span><span class="st">&quot;--color: #C0FFEE;&quot;</span><span class="kw">&gt;&lt;button</span> <span class="er">class</span><span class="ot">=</span><span class="st">&quot;svelte-1m9ptdb&quot;</span> <span class="er">style</span><span class="ot">=</span><span class="st">&quot;color: black;&quot;</span><span class="kw">&gt;</span>#C0FFEE</span></code></pre></div>
 <p>I used one sed command to extract only those lines from the html:</p>
-<pre><code>sed -n &#39;/#[A-Z]\{6,\}$/p&#39; index.html</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="at">-n</span> <span class="st">&#39;/#[A-Z]\{6,\}$/p&#39;</span> index.html</span></code></pre></div>
 <p>The <code>-n</code> flag tells sed not to print anything we don’t want; <code>[A-Z]</code> tells it to match only capitalized characters from A to Z; <code>\{6,\}</code> to match at least six of those characters; and <code>$</code> that those six letters should occur at the end of the line.</p>
 <p>By piping the results of this command back into sed, everything else in the line can be deleted:</p>
-<pre><code>sed &#39;s/^.*&gt;//g&#39;</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="st">&#39;s/^.*&gt;//g&#39;</span></span></code></pre></div>
 <p>The entire command looks like this:</p>
-<pre><code>sed -n &#39;/#[A-Z0]\{6,\}$/p&#39; index.html |\
-sed &#39;s/^.*&gt;//g&#39; &gt; hexwords.txt</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="at">-n</span> <span class="st">&#39;/#[A-Z0]\{6,\}$/p&#39;</span> index.html <span class="kw">|</span><span class="dt">\</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="st">&#39;s/^.*&gt;//g&#39;</span> <span class="op">&gt;</span> hexwords.txt</span></code></pre></div>
 <p>You’ll notice I added a <code>0</code> to the earlier <code>[A-Z]</code>. This is to keep “words” like <code>C0FFEE</code> and <code>D00D00</code> – which look close enough to the real thing to satisfy me. The <code>&gt; hexwords.txt</code> at the end writes the results to a textfile.</p>
 <p>The output text looks like this:</p>
 <pre><code>#C0FFEE

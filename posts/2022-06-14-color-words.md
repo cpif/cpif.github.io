@@ -24,7 +24,7 @@ Here's what I did.
 First, I downloaded the raw html of the site, then I inspected it
 for patterns with `less`:
 
-```
+```sh
 wget https://hexwords.netlify.app/
 less index.html
 ```
@@ -32,13 +32,13 @@ less index.html
 Thankfully, each word entry occupies a line all by itself. It
 looks like this:
 
-```
+```html
         </li><li class="svelte-1m9ptdb" style="--color: #C0FFEE;"><button class="svelte-1m9ptdb" style="color: black;">#C0FFEE
 ```
 
 I used one sed command to extract only those lines from the html:
 
-```
+```sh
 sed -n '/#[A-Z]\{6,\}$/p' index.html
 ```
 
@@ -50,13 +50,13 @@ that those six letters should occur at the end of the line.
 By piping the results of this command back into sed, everything
 else in the line can be deleted:
 
-```
+```sh
 sed 's/^.*>//g'
 ```
 
 The entire command looks like this:
 
-```
+```sh
 sed -n '/#[A-Z0]\{6,\}$/p' index.html |\
 sed 's/^.*>//g' > hexwords.txt
 ```
