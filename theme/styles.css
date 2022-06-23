@@ -32,7 +32,7 @@ pre {
     }
 }
 
-code {
+pre, code {
     background-color: darkgrey;
 }
 code span.al {
