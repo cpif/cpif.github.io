@@ -29,4 +29,3 @@ for page in (ls pages/*.md)
     pandoc $page -so docs/(basename $page .md)/index.html --template=theme/default.html
 end
 
-# vim:ft=sh:tw=0
